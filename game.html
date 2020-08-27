@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <script charset="utf-8" src="d3/d3.js"></script>
+    <script charset="utf-8" src="js/grid.js"></script>
+    <script charset="utf-8" src="js/grid_view.js"></script>
+    <script charset="utf-8" src="js/game_of_life.js"></script>
+    <script charset="utf-8" src="js/lights_off_game.js"></script>
+    <script charset="utf-8" src="js/minesweeper.js"></script>
+    <script charset="utf-8" src="js/games.js"></script>
+  </head>
+  <style>
+    table{
+      position: relative;
+      border-collapse: collapse;
+    }
+    td{
+      border: 1px solid #dddddd;
+    }
+    .victory{
+      position: absolute;
+      z-index: 100;
+      width: 100%;
+      text-align: center;
+      font-size: 100px;
+      margin: 0;
+      font-weight: bold;
+      color: #7B8AED;
+    }
+    .btn{
+      width: 100px;
+      height: 20px;
+    }
+  </style>
+
+  <body>
+    <select id="games" onchange="platform.pickGame()">
+      <option value="minesweeper">Minesweeper</option>
+      <option value="lights_off">Light Off</option>
+      <option value="game_of_life">Game of Life</option>
+    </select>
+    <input type="button" value="Animate" data-on="game_of_life" class="btn" onclick="platform.toggleAnimation(this)"/>
+    <input type="button" value="Start" data-on="all" class="btn" onclick="platform.startGame()"/>
+    <input type="range" min="5" max="20" value="5" id="gridSize" data-on="all"onchange="platform.changeGridSize(this.value)"/>
+    <span id="currentGridSize" data-on="all"></span>
+    <img id="mine_template" src="big_mine.png" style="display: none"/>
+
+    <table></table>
+  </body>
+</html>
